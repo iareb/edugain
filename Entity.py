@@ -119,11 +119,3 @@ class Entity:
             return True
         else:
             return False
-
-
-
-class XMLEntity:
-
-    def __init__(self, entityid):
-
-        entity_details = requests.get("https://technical.edugain.org/api.php?action=show_entity&e_id={id}".format(id=entityid))
