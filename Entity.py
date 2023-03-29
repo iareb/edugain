@@ -33,7 +33,8 @@ class Entity:
 
         else:
             print("Entity is not a Service Provider")
-	
+
+
     # Secondo costruttore, genera un oggetto Entity se è fornito un row_id invece che un entity_id	
     @classmethod
     def from_rowid(cls, rowid):
@@ -88,6 +89,12 @@ class Entity:
 
     def get_dsc(self):
         return self.dsc
+
+    # Il metodo ritorna la descrizione dell'entità nella lingua che si specifica in input
+    def get_lang_dsc(self, lang):
+        if lang in self.dsc.keys():
+            return self.dsc[lang]
+        return print("No description in:", lang)
 
     def get_lang(self):
         return self.lang
