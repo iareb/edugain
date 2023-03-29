@@ -106,6 +106,10 @@ class Entity:
     def get_org(self):
         return self.org
 
+    def get_org_url(self):
+        for key in self.org.keys():
+            return self.org[key]['url']
+
     def get_displayname(self):
         return self.display_name
 
