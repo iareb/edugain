@@ -91,10 +91,11 @@ class Entity:
         return self.dsc
 
     # Il metodo ritorna la descrizione dell'entità nella lingua che si specifica in input
-    def get_lang_dsc(self, lang):
+    def get_dsc_in(self, lang):
         if lang in self.dsc.keys():
             return self.dsc[lang]
-        return print("No description in:", lang)
+        else:
+            return None
 
     def get_lang(self):
         return self.lang
@@ -107,3 +108,18 @@ class Entity:
 
     def get_displayname(self):
         return self.display_name
+
+    # Semplice metodo che verifica se l'entità è erogata da un'organizzazione italiana
+    def is_italian(self):
+        if "it" in self.org.keys():
+            return True
+        else:
+            return False
+
+
+
+class XMLEntity:
+
+    def __init__(self, entityid):
+
+        entity_details = requests.get("https://technical.edugain.org/api.php?action=show_entity&e_id={id}".format(id=entityid))
