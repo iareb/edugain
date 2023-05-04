@@ -11,13 +11,6 @@ class XMLEntity:
         self.entity_ids = ""
         self.dsc = ""
 
-    def get_entityid(self, org_name):
-        names = self.tree.findall(".//{urn:oasis:names:tc:SAML:2.0:metadata}OrganizationName")
-        for name in names:
-            # Controlla se il nome dell'organizzazione è presente nel file
-            if org_name == name.text:
-                entity_id = self.tree.findall()
-
     def get_all_entityids(self):
         entity_ids = []
         for child in self.root:
@@ -26,9 +19,10 @@ class XMLEntity:
         return entity_ids
 
     def get_dsc(self):
-        sp_desc = self.tree.findall(".//{urn:oasis:names:tc:SAML:2.0:metadata}SPSSODescriptor")
-        for sp in sp_desc:
-            print(sp.tag, sp.attrib, sp.text)
+        desc = self.tree.findall(".//{urn:oasis:names:tc:SAML:2.0:metadata}SPSSODescriptor")
+        if desc is not None:
+            for d in desc:
+                print(d.ET.SubElement())
             #for child in sp:
             #    print(child.text)
 
@@ -47,6 +41,3 @@ class XMLEntity:
         return display_names
 
 
-content = XMLEntity()
-#print(content.get_dsc())
-print(content.get_lang("Kenya Education Network(KENET)"))
